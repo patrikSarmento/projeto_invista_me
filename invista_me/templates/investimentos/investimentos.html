@@ -1,0 +1,32 @@
+<!--passo 2 para exibir uma nova pagina para um usuario-->
+
+<!--para ver as informaçoes os dados da views investimento eu faço -->
+{% extends 'investimentos/base.html' %}
+{% block conteudo %}
+
+<h1 style="text-align: center;">listagem de investimento</h1>
+<div class="container">
+    <button class="btn btn-success" style="margin-bottom: 10px;";><a style="color: white;" href="{% url 'novo_investimento' %}">novo investimento</a></button>
+    <table class="table table-striped table-bordered">
+        <tr>
+            <th>id</th>
+            <th>investimento</th>
+            <th>valor</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        <!--vamos fazer um loop usando a sintax do django para que possamos iterar sobre todos os itens do banco de dados e exebir ele na tela-->
+        {% for dado in dados %}
+        <tr>
+            <td>{{dado.id}}</td>
+            <td>{{dado.investimento}}</td>
+            <td>{{dado.valor}}</td>
+            <td><button class="btn btn-info"><a style="color: white;" href="{% url 'detalhe' dado.id %}">detalhe</a></button></td>
+            <td><button class="btn btn-warning"><a style="color: white;" href="{% url 'editar' dado.id %}">editar</a></button></td>
+            <td><button class="btn btn-danger"><a style="color: white;"; href="{% url 'excluir' dado.id %}">excluir</a></button></td>
+        </tr>
+        {% endfor  %}
+    </table>
+    </div>
+{% endblock %}

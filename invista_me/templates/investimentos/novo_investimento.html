@@ -1,0 +1,16 @@
+{% extends 'investimentos/base.html' %}
+{% block conteudo %}
+{% load crispy_forms_tags %}
+<div class="container">
+    <h1>formulario novo investimento</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{formulario | crispy}}
+        <button type="submit" class="btn btn-success"">salvar</button>
+    </form>
+</div>
+{% endblock %}
+
+
+<!--form e a tag que nos permite que as informaçoes exibidas e registradas aqui dentro possam ser enviadas para o local que iremos apontar
+dentro da action=''-->
