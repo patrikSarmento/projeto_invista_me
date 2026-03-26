@@ -80,14 +80,11 @@ WSGI_APPLICATION = 'projeto_invista_me.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres', 
-        'USER': 'postgres', 
-        'PASSWORD': '080300Silva@',
-        'HOST': 'db.nywvmumumzyoarwnizsm.supabase.co', 
-        'PORT': '5432'
-    }
+    'default': dj_database_url.config(
+        default=os.getenv("DATABASE_URL"),
+        conn_max_age=600,
+        ssl_require=True
+    )
 }
 
 
